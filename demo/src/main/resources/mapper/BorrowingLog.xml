@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.ylin.demo.mapper.BorrowingLogMapper" >
+    <resultMap id="BaseResultMap" type="pers.ylin.demo.entity.BorrowingLog" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="case_number" property="caseNumber" jdbcType="VARCHAR" />
+        <result column="ious_number" property="iousNumber" jdbcType="VARCHAR" />
+        <result column="left_overdue_amount" property="leftOverdueAmount" javaType="DECIMAL"/>
+        <result column="overdue_days" property="overdueDays" jdbcType="INTEGER" />
+        <result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+        <result column="lately_depart_id" property="latelyDepartId.id" jdbcType="VARCHAR" />
+        <result column="lately_collector" property="latelyCollector" jdbcType="VARCHAR" />
+        <result column="current_depart_id" property="currentDepartId" jdbcType="VARCHAR" />
+        <result column="current_collector" property="currentCollector" jdbcType="VARCHAR" />
+        <result column="operator" property="operator" jdbcType="VARCHAR" />
+        <result column="operator_time" property="operatorTime" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, case_number, ious_number, left_overdue_amount, overdue_days, pay_status, lately_depart_id, lately_collector, current_depart_id, current_collector, operator, operator_time
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM borrowing_log
+    </select>
+
+    <select id="getOne" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM borrowing_log
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="pers.ylin.demo.entity.BorrowingLog">
+        <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="id">
+            SELECT UUID()
+        </selectKey>
+
+        INSERT INTO
+        borrowing_log
+        (id,case_number,ious_number,left_overdue_amount,overdue_days,pay_status)
+        VALUES
+        (#{id}, #{caseNumber}, #{iousNumber}, #{leftOverdueAmount}, #{overdueDays}, #{payStatus})
+    </insert>
+
+    <update id="update" parameterType="pers.ylin.demo.entity.BorrowingLog" >
+        UPDATE
+        borrowing_log
+        SET
+        <if test="payStatus != null">pay_status = #{payStatus}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String" >
+        DELETE FROM
+        borrowing_log
+        WHERE
+        id =#{id}
+    </delete>
+</mapper>

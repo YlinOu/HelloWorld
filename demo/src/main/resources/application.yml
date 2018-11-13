@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  redis:
+    database: 0
+    host: localhost
+    password:
+mybatis:
+  type-aliases-package: pers.ylin.demo.entity
+  mapper-locations: classpath:mapper/*.xml

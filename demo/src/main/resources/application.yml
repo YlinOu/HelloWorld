@@ -8,3 +8,5 @@ spring:
 mybatis:
   type-aliases-package: pers.ylin.demo.entity
   mapper-locations: classpath:mapper/*.xml
+server:
+  port: 9000

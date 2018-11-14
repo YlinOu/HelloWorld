@@ -2,7 +2,7 @@
 
 <configuration debug="true">
 
-    <property name="LOG_HOME" value="/home/logs" />
+    <property name="LOG_HOME" value="/root/logs" />
     <!--控制台输出日志信息-->
     <appender name="CONSOLE-LOG" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

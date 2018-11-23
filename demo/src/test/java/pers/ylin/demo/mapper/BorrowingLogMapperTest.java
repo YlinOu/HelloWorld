@@ -1,10 +1,5 @@
 package pers.ylin.demo.mapper;
 
-import com.taobao.api.ApiException;
-import com.taobao.api.DefaultTaobaoClient;
-import com.taobao.api.TaobaoClient;
-import com.taobao.api.request.TbkItemGetRequest;
-import com.taobao.api.response.TbkItemGetResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

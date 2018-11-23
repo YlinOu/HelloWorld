@@ -9,9 +9,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://47.94.225.151:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: ylin
-      password: ylinylin
+      url: jdbc:mysql://47.94.225.151:3306/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: Ylin970109
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 配置初始化大小、最小、最大
       initial-size: 20
